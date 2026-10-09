@@ -3,13 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SL8 | Technical Architecture Blueprint</title>
+    <title>SL8 | Technical Architecture</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
-    
     <script>
         tailwind.config = {
             theme: {
@@ -18,10 +17,9 @@
                         sans: ['Inter', 'sans-serif'],
                     },
                     colors: {
-                        slate: {
-                            850: '#151e2e',
-                            900: '#0f172a',
-                            950: '#020617',
+                        gray: {
+                            850: '#1f2937',
+                            950: '#030712',
                         }
                     }
                 }
@@ -31,246 +29,238 @@
 
     <style>
         body {
-            background-color: #0f172a; /* slate-900 */
-            color: #cbd5e1; /* slate-300 */
+            background-color: #030712; /* gray-950 */
+            color: #d1d5db; /* gray-300 */
         }
-        
-        /* Custom Scrollbar for the diagram container */
-        .diagram-container::-webkit-scrollbar {
-            height: 10px;
-            width: 10px;
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
         }
-        .diagram-container::-webkit-scrollbar-track {
-            background: #0f172a;
-            border-radius: 8px;
+        ::-webkit-scrollbar-track {
+            background: #030712;
         }
-        .diagram-container::-webkit-scrollbar-thumb {
-            background: #334155;
-            border-radius: 8px;
-            border: 2px solid #0f172a;
+        ::-webkit-scrollbar-thumb {
+            background: #374151;
+            border-radius: 4px;
         }
-        .diagram-container::-webkit-scrollbar-thumb:hover {
-            background: #475569;
+        ::-webkit-scrollbar-thumb:hover {
+            background: #4b5563;
         }
-
-        /* Glassmorphism utilities */
-        .glass-card {
-            background: rgba(30, 41, 59, 0.4);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(71, 85, 105, 0.4);
-        }
-        
         .gradient-text {
-            background: linear-gradient(to right, #38bdf8, #2dd4bf, #a78bfa);
+            background: linear-gradient(to right, #38bdf8, #818cf8);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
     </style>
 </head>
-<body class="antialiased min-h-screen flex flex-col items-center selection:bg-sky-500/30 selection:text-sky-200">
+<body class="antialiased min-h-screen flex flex-col items-center">
 
-    <header class="w-full max-w-7xl mx-auto px-6 pt-24 pb-16 text-center relative z-10">
-        <!-- Glow effect behind header -->
-        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-64 bg-sky-600/10 blur-[120px] rounded-full pointer-events-none"></div>
-        
-        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-card text-xs font-semibold text-slate-300 mb-8 uppercase tracking-widest shadow-lg shadow-sky-900/20">
-            <span class="w-2 h-2 rounded-full bg-teal-400 animate-pulse"></span>
-            Technical Investor Briefing
+    <header class="w-full max-w-7xl mx-auto px-6 pt-12 pb-12 flex justify-between items-center border-b border-gray-800/60 mb-8">
+        <div class="flex items-center gap-3">
+            <span class="w-3 h-3 rounded-full bg-sky-400"></span>
+            <span class="font-bold text-white tracking-wider text-sm uppercase">SL8 Architecture</span>
         </div>
-        <h1 class="text-5xl md:text-6xl lg:text-7xl font-extrabold text-white mb-6 tracking-tight">
-            SL8 Architecture <br />
-            <span class="gradient-text">Blueprint</span>
-        </h1>
-        <p class="mt-6 text-slate-400 max-w-2xl mx-auto leading-relaxed text-lg md:text-xl">
-            Visualizing the complete lifecycle of an interaction in an ADHD-friendly, offline-first productivity platform built around an infinite canvas.
-        </p>
+        <div>
+            <a href="index2.html" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-gray-800 hover:bg-gray-700 border border-gray-700 text-sm font-semibold text-white transition-all shadow-sm">
+                <span>Simpler V.</span>
+                <svg class="w-4 h-4 text-sky-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+            </a>
+        </div>
     </header>
 
-    <main class="w-full max-w-[95rem] mx-auto px-4 md:px-8 pb-24 space-y-24 relative z-10">
+    <div class="w-full max-w-7xl mx-auto px-6 text-center mb-8">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gray-800 border border-gray-700 text-sm font-medium text-gray-300 mb-6">
+            <span class="w-2 h-2 rounded-full bg-sky-400 animate-pulse"></span>
+            Investor Briefing
+        </div>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 tracking-tight">
+            SL8 Technical Architecture
+        </h1>
+        <h2 class="text-xl md:text-2xl text-gray-400 max-w-3xl mx-auto font-medium">
+            Product Vision & Development Blueprint
+        </h2>
+        <p class="mt-6 text-gray-500 max-w-2xl mx-auto leading-relaxed">
+            Visualizing the complete lifecycle of a user interaction in an ADHD-friendly, offline-first productivity platform built around an infinite canvas.
+        </p>
+    </div>
+
+    <main class="w-full max-w-7xl mx-auto px-4 md:px-6 pb-24 space-y-16">
         
-        <!-- The Architecture Diagram -->
-        <section aria-label="Architecture Flowchart" class="w-full glass-card rounded-2xl shadow-2xl p-4 md:p-8">
-            <div class="flex items-center justify-between mb-6 px-2">
-                <h2 class="text-xl font-bold text-white flex items-center gap-2">
-                    <svg class="w-5 h-5 text-sky-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"></path></svg>
-                    10-Stage System Funnel
-                </h2>
-                <div class="hidden sm:flex gap-4 text-xs font-medium text-slate-400">
-                    <div class="flex items-center gap-1"><span class="w-3 h-0.5 bg-slate-400"></span> Sync Path</div>
-                    <div class="flex items-center gap-1"><span class="w-3 h-0.5 border-t-2 border-dashed border-amber-400"></span> Async/Queued</div>
-                    <div class="flex items-center gap-1"><span class="w-3 h-0.5 bg-red-400"></span> Failure Flow</div>
-                </div>
-            </div>
-
-            <!-- Mermaid Container with horizontal scroll for mobile -->
-            <div class="diagram-container w-full overflow-x-auto pb-4">
-                <div class="mermaid min-w-[1000px] flex justify-center">
+        <section aria-label="Architecture Flowchart" class="w-full bg-gray-900 border border-gray-800 rounded-2xl shadow-2xl p-4 md:p-8 overflow-x-auto">
+            <div class="min-w-[800px] flex justify-center">
+                <div class="mermaid w-full">
 flowchart TD
-    %% Styling Configuration
-    classDef default fill:#1e293b,stroke:#475569,stroke-width:1px,color:#f8fafc,font-family:Inter;
-    classDef highlight fill:#0ea5e9,stroke:#0284c7,stroke-width:2px,color:#ffffff,font-weight:bold;
-    classDef offline fill:#b45309,stroke:#92400e,stroke-width:2px,color:#ffffff;
-    classDef fail fill:#9f1239,stroke:#881337,stroke-width:2px,color:#ffffff;
-    classDef db fill:#0f172a,stroke:#38bdf8,stroke-width:2px,stroke-dasharray: 5 5;
-    
-    %% Stage 1: Input
-    S1Input["1. User Input (Text, Voice, Canvas)"]:::highlight --> S2Capture["Input Capture"]
+    %% Styling
+    classDef default fill:#1f2937,stroke:#4b5563,stroke-width:1px,color:#f3f4f6,font-family:Inter;
+    classDef accentBlue fill:#0c4a6e,stroke:#0284c7,stroke-width:2px,color:#f0f9ff;
+    classDef warning fill:#7f1d1d,stroke:#b91c1c,stroke-width:2px,color:#fef2f2;
+    classDef container fill:transparent,stroke:#4b5563,stroke-width:2px,stroke-dasharray: 5 5;
 
-    %% Stage 2: Local Workspace
-    subgraph Stage2 ["2. Local Workspace & Persistence"]
-        S2Capture --> S2LocalDB[("IndexedDB (Local State)")]:::db
-        S2Capture --> S2ConnCheck{"Connectivity"}
-        S2ConnCheck -->|"Online"| S3Intent["3. Intent Classification"]
-        S2ConnCheck -->|"Offline"| S2Queue["Local Sync Queue"]:::offline
-        S2LocalDB -.-> S2Queue
+    %% Stage 1
+    Input["1. User Input (Text, Voice, Canvas)"]:::accentBlue --> Capture["Input Capture"]
+
+    %% Stage 2
+    subgraph L2 ["2. Local Workspace and Persistence"]
+        Capture --> LocalDB["Local Database & Log"]
+        LocalDB -.-> Queue["Pending Sync Queue"]
+        Capture --> ConnCheck{"Connectivity Check"}
+        ConnCheck -->|"Online"| Intent["Intent Classification"]
+        ConnCheck -->|"Offline"| OfflineAction["Queue AI/External Requests"]:::warning
+        OfflineAction -.-> Queue
     end
 
-    %% Stage 3: Intent & Context
-    subgraph Stage3 ["3. Intent & Context Resolution"]
-        S3Intent --> S3Context["Context Retrieval"]
+    %% Stage 3
+    subgraph L3 ["3. Intent & Context Resolution"]
+        Intent --> Context["Context Retrieval"]
     end
 
-    %% Stage 4: Orchestration
-    subgraph Stage4 ["4. Orchestration Engine"]
-        S3Context --> S4Router["Request Routing"]
-        S4Router --> S4Select["Model & Tool Selection"]
-        S4Select --> S4Perms["Permission & Limits Check"]
+    %% Stage 4
+    subgraph L4 ["4. SL8 Orchestration Engine"]
+        Context --> Route["Request Routing"]
+        Route --> ModelSelect["Model Selection"]
+        ModelSelect --> Permissions["Permission Checks"]
     end
 
-    %% Stage 5: Knowledge & Connectors
-    subgraph Stage5 ["5. Knowledge & Connectors"]
-        S5KB[("SL8 Knowledge DB")]:::db
-        S5ExtAI["External AI Providers"]
-        S5Gateway["3rd-Party API Gateway"]
-    end
-    
-    S4Perms <--> S5KB
-    S4Perms -.-> S5Gateway
-
-    %% Stage 6: AI Execution
-    subgraph Stage6 ["6. AI Execution"]
-        S4Perms --> S6Exec["Model Inference & Tools"]
-        S6Exec <--> S5ExtAI
-        S6Exec -.-> S5Gateway
-        S6Exec --> S6Check{"Provider OK?"}
-        S6Check -->|"Unavailable"| S6Fail["Preserve in Retry Queue"]:::fail
-        S6Fail -.-> S2Queue
+    %% Stage 5
+    subgraph L5 ["5. Knowledge & Connectors"]
+        KL["SL8 Knowledge Layer"]
+        APIs["External AI Providers"]
+        Gateway["Connector Gateway"]
     end
 
-    %% Stage 7: Validation
-    subgraph Stage7 ["7. Response Validation"]
-        S6Check -->|"Available"| S7Validate["Validate Tool Results"]
-        S7Validate --> S7Confirm["Action Permission Control"]
+    Permissions <--> KL
+    Permissions -.-> Gateway
+
+    %% Stage 6
+    subgraph L6 ["6. Personal AI Execution"]
+        Permissions --> Inference["Inference & Tool Calls"]
+        Inference <--> APIs
+        Inference -.-> Gateway
+        Inference --> ProviderCheck{"Provider Available?"}
+        ProviderCheck -->|"No"| FailAI["Preserve Request Locally"]:::warning
+        FailAI -.-> Queue
     end
 
-    %% Stage 8: Delivery
-    subgraph Stage8 ["8. Response Delivery"]
-        S7Confirm --> S8UI["UI Stream (Chat/Canvas)"]:::highlight
+    %% Stage 7
+    subgraph L7 ["7. Response Validation"]
+        ProviderCheck -->|"Yes"| Validate["Validate Results"]
+        Validate --> Confirm["Confirm Actions"]
     end
 
-    %% Stage 9: Memory Updates
-    subgraph Stage9 ["9. Memory & Workspace Updates"]
-        S8UI --> S9Update["Save: Raw, Derived, Actions"]
-        S9Update --> S5KB
+    %% Stage 8
+    subgraph L8 ["8. Response Delivery"]
+        Confirm --> UI["UI Delivery (Canvas / Chat)"]:::accentBlue
     end
 
-    %% Stage 10: Cloud Sync
-    subgraph Stage10 ["10. Cloud Sync & Recovery"]
-        S2Queue -.-> S10SyncEngine["Sync Engine (Idempotent)"]
-        S10SyncEngine <--> S10Cloud[("Cloud Backend")]:::db
-        S10SyncEngine --> S10Conflict["Conflict Resolution (CRDT)"]
+    %% Stage 9
+    subgraph L9 ["9. Memory & Workspace Updates"]
+        UI --> Updates["Memory Updates (Raw, Derived, Actions)"]
+        Updates --> KL
+    end
+
+    %% Stage 10
+    subgraph L10 ["10. Cloud Sync"]
+        Queue -.-> Sync["Sync Queue & Conflict Resolution"]
+        Sync <--> Cloud["Cloud Backend"]
     end
                 </div>
             </div>
         </section>
 
-        <!-- Detailed Sections -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <section aria-label="Diagram Legend" class="grid grid-cols-1 md:grid-cols-3 gap-4 border-b border-gray-800 pb-12">
+            <div class="flex items-center gap-3 bg-gray-900 p-4 rounded-xl border border-gray-800">
+                <div class="text-white font-mono font-bold tracking-tighter">──&gt;</div>
+                <div>
+                    <h3 class="text-sm font-semibold text-white">Synchronous Flow</h3>
+                    <p class="text-xs text-gray-400">Primary execution path</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-3 bg-gray-900 p-4 rounded-xl border border-gray-800">
+                <div class="text-gray-400 font-mono font-bold tracking-tighter">-.-&gt;</div>
+                <div>
+                    <h3 class="text-sm font-semibold text-white">Asynchronous Flow</h3>
+                    <p class="text-xs text-gray-400">Queued or background tasks</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-3 bg-gray-900 p-4 rounded-xl border border-gray-800">
+                <div class="text-sky-500 font-mono font-bold tracking-tighter">&lt;--&gt;</div>
+                <div>
+                    <h3 class="text-sm font-semibold text-white">Bidirectional</h3>
+                    <p class="text-xs text-gray-400">Data exchange & sync</p>
+                </div>
+            </div>
+        </section>
+
+        <section aria-label="Architecture Principles" class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
             
-            <!-- Core Promise -->
-            <div class="glass-card p-8 rounded-2xl md:col-span-2 lg:col-span-3 border-t-4 border-t-sky-500 relative overflow-hidden">
-                <div class="absolute -right-20 -top-20 w-64 h-64 bg-sky-500/10 blur-3xl rounded-full"></div>
-                <h3 class="text-2xl font-bold text-white mb-4">Core Product Promise</h3>
-                <p class="text-xl font-medium text-sky-400 mb-6">Capture everything. Organize automatically. Think with your own AI.</p>
-                <div class="grid md:grid-cols-3 gap-8">
-                    <div>
-                        <h4 class="text-white font-semibold mb-2">Frictionless Capture</h4>
-                        <p class="text-sm text-slate-400 leading-relaxed">Users drop thoughts into the system without deciding where they belong. The interface removes the cognitive load of categorization, crucial for ADHD-friendly design.</p>
-                    </div>
-                    <div>
-                        <h4 class="text-white font-semibold mb-2">Automated Organization</h4>
-                        <p class="text-sm text-slate-400 leading-relaxed">SL8 progressively connects related information, surfaces context, and automates mundane tasks in the background without rigid schemas.</p>
-                    </div>
-                    <div>
-                        <h4 class="text-white font-semibold mb-2">Personal Intelligence</h4>
-                        <p class="text-sm text-slate-400 leading-relaxed">Your AI contextualizes your unique knowledge base. It is a thinking partner that acts on your behalf across connected applications safely.</p>
-                    </div>
+            <div class="space-y-4">
+                <div class="inline-flex items-center justify-center w-12 h-12 rounded-lg bg-gray-800 border border-gray-700 text-sky-400 mb-2">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
                 </div>
-            </div>
-
-            <!-- Offline-First -->
-            <div class="glass-card p-8 rounded-2xl group hover:border-teal-500/50 transition-colors">
-                <div class="w-12 h-12 rounded-lg bg-teal-500/10 flex items-center justify-center mb-6 text-teal-400 border border-teal-500/20">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
-                </div>
-                <h3 class="text-xl font-bold text-white mb-3">The Offline-First Principle</h3>
-                <p class="text-sm text-slate-400 leading-relaxed">
-                    <strong>Capture never waits.</strong> Core functionality relies on local IndexedDB storage. Network drops route operations to a robust pending queue. The canvas remains fluid and editable offline. Cloud sync resumes idempotently when connectivity returns, utilizing CRDTs to prevent destructive conflicts.
+                <h3 class="text-2xl font-bold text-white">The Offline-First Guarantee</h3>
+                <p class="text-gray-400 leading-relaxed text-sm">
+                    Capture never waits. Because our core demographic struggles with executive function, introducing loading spinners during quick capture breaks the workflow. Every piece of data is instantly persisted to a local IndexedDB store and placed in a synchronization queue. If the internet drops, the visual canvas remains 100% usable. Remote AI inference simply pauses and waits for connectivity to resume.
                 </p>
             </div>
 
-            <!-- Decoupled AI -->
-            <div class="glass-card p-8 rounded-2xl group hover:border-violet-500/50 transition-colors">
-                <div class="w-12 h-12 rounded-lg bg-violet-500/10 flex items-center justify-center mb-6 text-violet-400 border border-violet-500/20">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+            <div class="space-y-4">
+                <div class="inline-flex items-center justify-center w-12 h-12 rounded-lg bg-gray-800 border border-gray-700 text-purple-400 mb-2">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg>
                 </div>
-                <h3 class="text-xl font-bold text-white mb-3">Decoupled AI & Privacy</h3>
-                <p class="text-sm text-slate-400 leading-relaxed">
-                    SL8 separates the persistent knowledge layer from the LLM provider. Bring your own API key or use supported OAuth integrations. The system maintains its own strict memory typology (Raw vs. Derived), ensuring AI hallucinations never silently overwrite your ground truth.
+                <h3 class="text-2xl font-bold text-white">Decoupled Intelligence</h3>
+                <p class="text-gray-400 leading-relaxed text-sm">
+                    SL8 treats AI providers as interchangeable computational engines, not as the source of truth. The persistent knowledge graph and memory layer live within SL8. This ensures that users are never locked into OpenAI, Anthropic, or Google. By explicitly routing context to the Orchestrator, we maintain privacy, minimize token usage, and retain a portable memory structure regardless of the underlying LLM.
                 </p>
             </div>
 
-            <!-- Connectors & Extensibility -->
-            <div class="glass-card p-8 rounded-2xl group hover:border-amber-500/50 transition-colors">
-                <div class="w-12 h-12 rounded-lg bg-amber-500/10 flex items-center justify-center mb-6 text-amber-400 border border-amber-500/20">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+            <div class="space-y-4 md:col-span-2 mt-4 p-6 md:p-8 rounded-2xl bg-gray-900 border border-red-900/30 relative overflow-hidden">
+                <div class="absolute top-0 right-0 p-8 opacity-5">
+                    <svg class="w-32 h-32" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"></path></svg>
                 </div>
-                <h3 class="text-xl font-bold text-white mb-3">Modular Connector API</h3>
-                <p class="text-sm text-slate-400 leading-relaxed">
-                    An n8n-inspired background engine integrates Teams, Slack, Notion, and Jira. Actions undergo strict permission controls inside the Orchestration Engine. Consequential mutations require user approval, while background webhooks continuously ingest relevant context seamlessly.
-                </p>
+                <h3 class="text-2xl font-bold text-white mb-6">Failure Paths & System Resilience</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 relative z-10">
+                    <div>
+                        <h4 class="text-red-400 font-semibold mb-1">Internet & Provider Outages</h4>
+                        <p class="text-sm text-gray-400">If the internet drops or an AI provider returns a 503, the user's intent is never lost. The operation is preserved in the local queue and flagged in the UI as "Pending". Background retries happen idempotently once connectivity is restored.</p>
+                    </div>
+                    <div>
+                        <h4 class="text-red-400 font-semibold mb-1">Connector Auth Revocations</h4>
+                        <p class="text-sm text-gray-400">If an external integration (like Slack or Notion) revokes OAuth access, the Orchestration Engine immediately halts read/write attempts, flushes local caches according to retention policies, and prompts the user to re-authenticate without crashing the app.</p>
+                    </div>
+                    <div class="md:col-span-2">
+                        <h4 class="text-red-400 font-semibold mb-1">Synchronization Conflicts</h4>
+                        <p class="text-sm text-gray-400">Multi-device edits to the same canvas node offline will inevitably cause conflicts. The cloud backend uses CRDTs (Conflict-Free Replicated Data Types) or strict revision tracking to safely merge non-destructive changes, ensuring no user knowledge is ever silently overwritten.</p>
+                    </div>
+                </div>
             </div>
-
-        </div>
+            
+        </section>
     </main>
 
-    <footer class="w-full py-8 text-center border-t border-slate-800 text-slate-500 text-sm mt-auto relative z-10">
-        <p>&copy; 2026 SL8 Platform. Confidential Architecture Blueprint.</p>
+    <footer class="w-full py-8 text-center border-t border-gray-800 text-gray-600 text-sm">
+        <p>&copy; 2026 SL8. Capture everything. Organize automatically. Think with your own AI.</p>
     </footer>
 
-    <!-- Mermaid.js integration (Flawless Syntax Version) -->
+    <!-- Strict Mermaid Import -->
     <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             mermaid.initialize({
                 startOnLoad: true,
-                theme: 'base',
+                theme: 'dark',
                 themeVariables: {
-                    background: '#0f172a',
-                    primaryColor: '#1e293b',
-                    primaryTextColor: '#f8fafc',
-                    primaryBorderColor: '#475569',
-                    lineColor: '#64748b',
-                    secondaryColor: '#0c4a6e',
-                    tertiaryColor: '#0f172a',
-                    fontFamily: 'Inter, sans-serif'
+                    fontFamily: 'Inter, sans-serif',
+                    background: '#1f2937',
+                    primaryColor: '#1f2937',
+                    primaryBorderColor: '#4b5563',
+                    primaryTextColor: '#f3f4f6',
+                    lineColor: '#6b7280',
                 },
                 flowchart: {
-                    htmlLabels: true,
+                    htmlLabels: false,
                     curve: 'basis'
                 },
-                securityLevel: 'loose' // Allowed safely since we own the exact markup
+                securityLevel: 'strict'
             });
         });
     </script>
